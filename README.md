@@ -26,7 +26,7 @@
 ---
 
 ## 🔗 3. 데모
-- [데모보기](file:///C:/Users/%EB%B0%95%EC%B4%88%ED%98%84/.gemini/antigravity/scratch/culture-archiver/index.html)
+- [데모보기](https://chohyeon0919.github.io/Private-Archive/))
 
 ---
 
