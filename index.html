@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Archive | 나만의 문화생활 기록소</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="타인의 시선 없이 오롯이 혼자만의 감상을 안전하게 기록하는 프라이빗 아카이브 공간입니다. 책, 영화, 드라마 감상평을 기록해보세요.">
+  <!-- Google Fonts: Outfit & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SVG Gradients Definition for Stars -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="half-star-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="50%" stop-color="#f59e0b" />
+        <stop offset="50%" stop-color="#334155" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="app-container">
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="logo-icon">✨</span>
+        <h1 class="logo-text">Private Archive</h1>
+      </div>
+      <p class="subtitle">타인의 시선 없이 기록하는 나만의 조용한 감상 기록소</p>
+    </header>
+
+    <!-- Category Tabs Navigation -->
+    <nav class="category-tabs" aria-label="카테고리 탭">
+      <button class="tab-btn active" data-category="book" id="tab-book">
+        <span class="tab-icon">📚</span> 책
+      </button>
+      <button class="tab-btn" data-category="movie" id="tab-movie">
+        <span class="tab-icon">🎬</span> 영화
+      </button>
+      <button class="tab-btn" data-category="drama" id="tab-drama">
+        <span class="tab-icon">📺</span> 드라마
+      </button>
+    </nav>
+
+    <!-- Main Workspace Layout -->
+    <main class="main-layout">
+      
+      <!-- Left Column: Registration Form -->
+      <section class="form-section">
+        <div class="glass-panel form-container">
+          <h2 class="section-title">
+            <span class="category-badge" id="form-category-badge">책</span> 기록하기
+          </h2>
+          
+          <form id="record-form" novalidate>
+            <!-- Title Input Group -->
+            <div class="input-group">
+              <label for="title-input">제목 <span class="required">*</span></label>
+              <input type="text" id="title-input" placeholder="기록할 콘텐츠의 제목을 입력하세요" required autocomplete="off">
+              <div class="error-message" id="title-error" aria-live="polite"></div>
+            </div>
+
+            <!-- Image URL Input Group -->
+            <div class="input-group">
+              <label for="image-input">커버 / 포스터 이미지 URL</label>
+              <input type="url" id="image-input" placeholder="https://example.com/poster.jpg" autocomplete="off">
+              <span class="input-helper">비워두면 카테고리별 기본 테마 이미지가 설정됩니다.</span>
+            </div>
+
+            <!-- Star Rating Input Group -->
+            <div class="input-group">
+              <label>별점 <span class="rating-value-display" id="rating-value-display">(0.0점)</span></label>
+              <div class="star-rating-container">
+                <div class="star-rating" id="star-rating-input">
+                  <div class="star-star" data-index="1" aria-label="1점">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                  <div class="star-star" data-index="2" aria-label="2점">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                  <div class="star-star" data-index="3" aria-label="3점">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                  <div class="star-star" data-index="4" aria-label="4점">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                  <div class="star-star" data-index="5" aria-label="5점">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Textarea Group -->
+            <div class="input-group">
+              <label for="review-input">후기</label>
+              <textarea id="review-input" rows="6" placeholder="여기에 오롯이 자신만을 위한 솔직한 감상을 적어보세요. 글자 수 제한 없이 넉넉하게 작성하실 수 있습니다."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span>기록하기</span>
+              <span class="btn-glow"></span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Right Column: Dashboard Grid -->
+      <section class="dashboard-section">
+        <!-- Empty State Container -->
+        <div class="empty-state" id="empty-state-view">
+          <div class="empty-state-icon">🌸</div>
+          <p class="empty-state-text">나만 볼 수 있는 첫 후기를 남겨보세요!</p>
+          <span class="empty-state-sub">작성된 모든 감상은 브라우저의 안전한 로컬 저장소에 보관됩니다.</span>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-grid hidden" id="cards-grid-view">
+          <!-- Dynamically generated cards go here -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Detail View Modal Backdrop -->
+  <div class="modal-backdrop hidden" id="detail-modal" role="dialog" aria-modal="true">
+    <div class="modal-content glass-panel">
+      <!-- Close Button -->
+      <button class="modal-close" id="modal-close-btn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+
+      <div class="modal-layout">
+        <!-- Modal Left: Poster Image -->
+        <div class="modal-poster-area" id="modal-poster">
+          <!-- Fallback or url image dynamically injected here -->
+        </div>
+
+        <!-- Modal Right: Text & Details -->
+        <div class="modal-info-area">
+          <div class="modal-header-meta">
+            <span class="category-tag" id="modal-category-badge">BOOK</span>
+            <div class="modal-dates-wrapper">
+              <span class="modal-date" id="modal-created-date">등록: -</span>
+              <span class="modal-date" id="modal-modified-date">수정: -</span>
+            </div>
+          </div>
+
+          <!-- Title Area -->
+          <h3 class="modal-title view-only" id="modal-title-display">제목이 여기에 표시됩니다</h3>
+          <div class="input-group edit-only">
+            <label for="modal-title-input">제목 <span class="required">*</span></label>
+            <input type="text" id="modal-title-input" placeholder="콘텐츠 제목을 입력해 주세요" required autocomplete="off">
+            <div class="error-message" id="modal-title-error" aria-live="polite"></div>
+          </div>
+
+          <!-- Star Rating Display / Input in Modal -->
+          <!-- View mode rating -->
+          <div class="modal-stars-container view-only">
+            <div class="static-stars" id="modal-stars-display">
+              <!-- Static stars injected here -->
+            </div>
+            <span class="modal-rating-score" id="modal-rating-score">0.0</span>
+          </div>
+
+          <!-- Edit mode rating -->
+          <div class="input-group edit-only">
+            <label>별점 <span class="rating-value-display" id="modal-rating-value-display">(0.0점)</span></label>
+            <div class="star-rating-container">
+              <div class="star-rating" id="modal-star-rating-input">
+                <div class="star-star" data-index="1" aria-label="1점">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <div class="star-star" data-index="2" aria-label="2점">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <div class="star-star" data-index="3" aria-label="3점">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <div class="star-star" data-index="4" aria-label="4점">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <div class="star-star" data-index="5" aria-label="5점">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review scrollable container -->
+          <div class="modal-review-container view-only">
+            <p class="modal-review-text" id="modal-review-display">
+              후기 내용이 여기에 작성됩니다. 길어질 경우 스크롤바가 자동 생성됩니다.
+            </p>
+          </div>
+          <div class="input-group edit-only">
+            <label for="modal-review-input">후기</label>
+            <textarea id="modal-review-input" rows="5" placeholder="솔직한 감상을 적어보세요"></textarea>
+          </div>
+
+          <!-- Edit Mode Image URL Input -->
+          <div class="input-group edit-only">
+            <label for="modal-image-input">커버 / 포스터 이미지 URL</label>
+            <input type="url" id="modal-image-input" placeholder="https://example.com/poster.jpg" autocomplete="off">
+          </div>
+
+          <!-- Action Footers -->
+          <div class="modal-footer view-only">
+            <button class="delete-btn" id="modal-delete-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+              </svg>
+              삭제하기
+            </button>
+            <button class="edit-btn" id="modal-edit-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+              </svg>
+              수정하기
+            </button>
+          </div>
+          <div class="modal-footer edit-only">
+            <button class="cancel-btn" id="modal-cancel-btn">취소</button>
+            <button class="save-btn" id="modal-save-btn">저장하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
