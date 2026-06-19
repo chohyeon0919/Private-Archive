@@ -26,7 +26,7 @@
 ---
 
 ## 🔗 3. 데모
-- [데모보기](https://chohyeon0919.github.io/Private-Archive/))
+- [데모보기] ((https://chohyeon0919.github.io/Private-Archive/))
 
 ---
 
